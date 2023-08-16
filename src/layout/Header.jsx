@@ -1,17 +1,22 @@
 function Header() {
   return (
-    <nav className="green darken-1">
+    <nav className="dark darken-1">
       <div className="nav-wrapper">
         <a
           target="__blanck"
           href="https://www.omdbapi.com/"
           className="brand-logo"
         >
-          React Movies (used by API OMDb API)
+          Movie catalog on React
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <a href="!#">Repo</a>
+            <a
+              target="__blanck"
+              href="https://vitaliygalata1986.github.io/react-movies/"
+            >
+              Link to production
+            </a>
           </li>
         </ul>
       </div>

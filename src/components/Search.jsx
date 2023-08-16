@@ -50,7 +50,7 @@ class Search extends React.Component {
         <div className="col s12">
           <div className="input-field">
             <input
-              placeholder="search"
+              placeholder="Search ..."
               type="search"
               className="validate"
               value={this.state.search}
