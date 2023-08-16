@@ -35,3 +35,14 @@ nav {
 label:not(:last-child) {
   margin-right: 1rem;
 }
+
+.filters-radio {
+  display: inline-block;
+  margin-right: 1rem;
+  width: 35px;
+}
+
+.block {
+  display: flex;
+  margin-bottom: 10px;
+}
