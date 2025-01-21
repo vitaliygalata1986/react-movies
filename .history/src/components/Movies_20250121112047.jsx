@@ -1,7 +1,7 @@
 import { Movie } from './Movie';
 import Button from '../components/Button';
 // function Movies({ movies = [], pageCount, setPageCount, onClick, loading }) {
-function Movies({ movies = [], ...props }) {
+function Movies({ movies = [], pageCount, setPageCount, onClick, loading }) {
   // function Movies({ ...props }) {
   // console.log(movies); // если прилетит undefined, то по умолчанию назначим пустой массив
   return (

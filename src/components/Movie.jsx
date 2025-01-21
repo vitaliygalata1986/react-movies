@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Movie({
   Title: title,
@@ -8,7 +8,7 @@ function Movie({
   Poster: poster,
 }) {
   return (
-    <div id={id} className="card movie">
+    <Link to={`/movie/${id}`} className="card movie">
       <div className="card-image waves-effect waves-block waves-light">
         {poster === 'N/A' ? (
           <img
@@ -28,7 +28,7 @@ function Movie({
           {year} <span className="right">{type}</span>
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 

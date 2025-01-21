@@ -9,9 +9,12 @@ function Header() {
         </Link>
         <ul id='nav-mobile' className='right hide-on-med-and-down'>
           <li>
-            <Link to='https://vitaliygalata1986.github.io/react-movies/'>
+            <a
+              target='__blanck'
+              href='https://vitaliygalata1986.github.io/react-movies/'
+            >
               Link to production
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

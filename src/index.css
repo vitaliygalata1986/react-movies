@@ -46,3 +46,8 @@ label:not(:last-child) {
   display: flex;
   margin-bottom: 10px;
 }
+
+.card.movie-info img {
+  width: auto;
+  margin: 0 auto;
+}

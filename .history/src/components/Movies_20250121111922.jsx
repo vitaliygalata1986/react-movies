@@ -1,12 +1,11 @@
 import { Movie } from './Movie';
 import Button from '../components/Button';
 // function Movies({ movies = [], pageCount, setPageCount, onClick, loading }) {
-function Movies({ movies = [], ...props }) {
-  // function Movies({ ...props }) {
+function Movies({ movies = [], pageCount, setPageCount, onClick, loading }) {
   // console.log(movies); // если прилетит undefined, то по умолчанию назначим пустой массив
   return (
     <>
-      <div className='movies'>
+      <div className="movies">
         {movies.length ? (
           movies.map((movie) => (
             <Movie key={movie.imdbID} {...movie} /> // так как мы получаем массив объектов, то применим spread оператор

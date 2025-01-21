@@ -3,23 +3,23 @@ import { useState } from 'react';
 
 function Search({ searchMovies = Function.prototype }) {
   const [search, setSearch] = useState('');
-  const [type, setType] = useState('all');
-  const [year, setYear] = useState(2023);
+  const [genre, setGenre] = useState('all');
+  const [year, setYear] = useState(2024);
 
   const handleKey = (event) => {
     if (event.key === 'Enter') {
-      searchMovies(search, type, year);
+      searchMovies(search, genre, year);
     }
   };
 
-  const handleFilter = (event) => {
-    setType(event.target.value);
-    searchMovies(search, event.target.value, year);
+  const handleGenre = (event) => {
+    setGenre(event.target.value);
+    // searchMovies(search, event.target.value, year);
   };
 
   const handleYear = (event) => {
     setYear(+event.target.value);
-    searchMovies(search, type, event.target.value);
+    // searchMovies(search, genre, event.target.value);
   };
 
   return (
@@ -36,7 +36,7 @@ function Search({ searchMovies = Function.prototype }) {
           />
           <button
             className="btn search-btn"
-            onClick={() => searchMovies(search, type, year)}
+            onClick={() => searchMovies(search, genre, year)}
           >
             Search
           </button>
@@ -48,55 +48,55 @@ function Search({ searchMovies = Function.prototype }) {
           <label>
             <input
               className="with-gap"
-              name="filter_film"
+              name="filter_genre"
               value="all"
               type="radio"
-              checked={type === 'all'}
-              onChange={handleFilter}
+              checked={genre === 'all'}
+              onChange={handleGenre}
             />
             <span>All</span>
           </label>
           <label>
             <input
               className="with-gap"
-              name="filter_film"
+              name="filter_genre"
               value="movie"
               type="radio"
-              checked={type === 'movie'}
-              onChange={handleFilter}
+              checked={genre === 'movie'}
+              onChange={handleGenre}
             />
             <span>Movies only</span>
           </label>
           <label>
             <input
               className="with-gap"
-              name="filter_film"
+              name="filter_genre"
               value="game"
               type="radio"
-              checked={type === 'game'}
-              onChange={handleFilter}
+              checked={genre === 'game'}
+              onChange={handleGenre}
             />
             <span>Game only</span>
           </label>
           <label>
             <input
               className="with-gap"
-              name="filter_film"
+              name="filter_genre"
               value="series"
               type="radio"
-              checked={type === 'series'}
-              onChange={handleFilter}
+              checked={genre === 'series'}
+              onChange={handleGenre}
             />
             <span>Series only</span>
           </label>
           <label>
             <input
               className="with-gap"
-              name="filter_film"
+              name="filter_genre"
               value="episode"
               type="radio"
-              checked={type === 'episode'}
-              onChange={handleFilter}
+              checked={genre === 'episode'}
+              onChange={handleGenre}
             />
             <span>Episode only</span>
           </label>
@@ -105,6 +105,17 @@ function Search({ searchMovies = Function.prototype }) {
       <div className="col s12 block">
         <span className="filters-radio">Year:</span>
         <div>
+          <label>
+            <input
+              className="with-gap"
+              name="year"
+              value="2024"
+              type="radio"
+              checked={year === 2024}
+              onChange={handleYear}
+            />
+            <span>2024</span>
+          </label>
           <label>
             <input
               className="with-gap"
