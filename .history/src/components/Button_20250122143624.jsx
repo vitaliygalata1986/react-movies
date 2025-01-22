@@ -4,7 +4,9 @@ import cn from 'classnames';
 function Button({ clickCallback, children, className }) {
   return (
     <>
-      <button className={cn('btn', className)}>{children}</button>
+     <button className={cn('ntm', className)}
+        {children}
+      </button>
     </>
   );
 }

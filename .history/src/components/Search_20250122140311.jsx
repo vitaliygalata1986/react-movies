@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { Button } from './Button';
 
 function Search({ searchMovies = Function.prototype }) {
   const [search, setSearch] = useState('');
@@ -35,12 +34,12 @@ function Search({ searchMovies = Function.prototype }) {
             onChange={(event) => setSearch(event.target.value)}
             onKeyDown={handleKey}
           />
-          <Button
-            className='search-btn'
-            clickCallback={() => searchMovies(search, genre, year)}
+          <Buuton
+            className='btn search-btn'
+            onClick={() => searchMovies(search, genre, year)}
           >
             Search
-          </Button>
+          </Buuton>
         </div>
       </div>
       <div className='col s12 block'>

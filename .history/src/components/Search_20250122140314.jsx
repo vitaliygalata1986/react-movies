@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { Button } from './Button';
 
 function Search({ searchMovies = Function.prototype }) {
   const [search, setSearch] = useState('');
@@ -36,8 +35,8 @@ function Search({ searchMovies = Function.prototype }) {
             onKeyDown={handleKey}
           />
           <Button
-            className='search-btn'
-            clickCallback={() => searchMovies(search, genre, year)}
+            className='btn search-btn'
+            onClick={() => searchMovies(search, genre, year)}
           >
             Search
           </Button>

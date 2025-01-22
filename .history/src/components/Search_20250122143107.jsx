@@ -36,8 +36,9 @@ function Search({ searchMovies = Function.prototype }) {
             onKeyDown={handleKey}
           />
           <Button
-            className='search-btn'
+            className='btn search-btn'
             clickCallback={() => searchMovies(search, genre, year)}
+        
           >
             Search
           </Button>
