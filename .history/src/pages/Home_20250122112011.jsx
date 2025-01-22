@@ -13,6 +13,8 @@ function Home() {
   const [pageCount, setPageCount] = useState(1);
   const [nameButton, setNameButton] = useState('Показать еще');
 
+  console.log(movies);
+
   const [searchParams, setSearchParams] = useState({
     search: '',
     genre: 'all',
@@ -72,10 +74,14 @@ function Home() {
       ) : (
         <>
           <Movies movies={movies} />
-          {movies.length > 0 &&
-            nameButton !== 'Фильмы закончились' && ( // Скрыть кнопку, если фильмы закончились
-              <Button clickCallback={handleShowMore}>{nameButton}</Button>
-            )}
+          {movies.length > 0 && ( // Проверка, что фильмы загружены
+            <Button
+              clickCallback={handleShowMore}
+              disabled={nameButton === 'Фильмы закончились'}
+            >
+              {nameButton}
+            </Button>
+          )}
         </>
       )}
     </div>

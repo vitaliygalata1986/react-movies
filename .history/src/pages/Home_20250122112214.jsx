@@ -13,6 +13,8 @@ function Home() {
   const [pageCount, setPageCount] = useState(1);
   const [nameButton, setNameButton] = useState('Показать еще');
 
+  console.log(movies);
+
   const [searchParams, setSearchParams] = useState({
     search: '',
     genre: 'all',
@@ -64,22 +66,23 @@ function Home() {
     setPageCount((prev) => prev + 1); // Увеличиваем номер страницы
   };
 
-  return (
-    <div>
-      <Search searchMovies={searchMovies} />
-      {loading ? (
-        <Preloader />
-      ) : (
-        <>
-          <Movies movies={movies} />
-          {movies.length > 0 &&
-            nameButton !== 'Фильмы закончились' && ( // Скрыть кнопку, если фильмы закончились
-              <Button clickCallback={handleShowMore}>{nameButton}</Button>
-            )}
-        </>
-      )}
-    </div>
-  );
+return (
+  <div>
+    <Search searchMovies={searchMovies} />
+    {loading ? (
+      <Preloader />
+    ) : (
+      <>
+        <Movies movies={movies} />
+        {movies.length > 0 &&
+          nameButton !== 'Фильмы закончились' && ( // Скрыть кнопку, если фильмы закончились
+            <Button clickCallback={handleShowMore}>{nameButton}</Button>
+          )}
+      </>
+    )}
+  </div>
+);
+
 }
 
 export { Home };

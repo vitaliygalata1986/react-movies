@@ -3,7 +3,7 @@ import { API_URL } from './config';
 // get all movies
 const getAllMovies = async (search, genre, year, pageCount) => {
   const responce = await fetch(
-    `${API_URL}&s=${search || 'all'}${
+    `${API_URL}&s=${search ? search : 'all'}${
       genre !== 'all' ? `&type=${genre}` : ''
     }&y=${year}&page=${pageCount}`
   );

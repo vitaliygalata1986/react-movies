@@ -13,29 +13,15 @@ function Home() {
   const [pageCount, setPageCount] = useState(1);
   const [nameButton, setNameButton] = useState('Показать еще');
 
-  const [searchParams, setSearchParams] = useState({
-    search: '',
-    genre: 'all',
-    year: 2025,
-  });
-
   const getAllFilms = async () => {
-    const { search, genre, year } = searchParams;
-    setLoading(true);
     setNameButton('Загружаю');
     try {
-      const data = await getAllMovies(search, genre, year, pageCount);
-      if (data?.Search?.length > 0) {
-        // Если фильмы есть, добавляем их
-        setMovies((prevMovies) => [...prevMovies, ...data.Search]);
-        setNameButton('Показать еще');
-      } else {
-        // Если фильмов нет, показываем сообщение
-        setNameButton('Фильмы закончились');
-      }
+      const data = await getAllMovies(pageCount);
+      setMovies(data?.Search ?? []);
+      setLoading(false);
+      setNameButton('Показать еще');
     } catch (err) {
       console.log(err);
-    } finally {
       setLoading(false);
     }
   };
@@ -46,16 +32,12 @@ function Home() {
   }, [pageCount]);
 
   const searchMovies = async (str, type, year) => {
-    setSearchParams({ search: str, genre: type, year });
-    setPageCount(1); // Сброс номера страницы
-    setLoading(true);
     try {
       const data = await getAllMoviesBySearch(str, type, year);
       setMovies(data?.Search ?? []);
-      setNameButton('Показать ещё');
+      setLoading(false);
     } catch (err) {
       console.log(err);
-    } finally {
       setLoading(false);
     }
   };
@@ -72,10 +54,12 @@ function Home() {
       ) : (
         <>
           <Movies movies={movies} />
-          {movies.length > 0 &&
-            nameButton !== 'Фильмы закончились' && ( // Скрыть кнопку, если фильмы закончились
-              <Button clickCallback={handleShowMore}>{nameButton}</Button>
-            )}
+          <button
+          
+            clickCallback={handleShowMore}
+          >
+            {nameButton}
+          </button>
         </>
       )}
     </div>

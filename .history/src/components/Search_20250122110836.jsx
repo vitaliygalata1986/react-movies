@@ -4,7 +4,7 @@ import { useState } from 'react';
 function Search({ searchMovies = Function.prototype }) {
   const [search, setSearch] = useState('');
   const [genre, setGenre] = useState('all');
-  const [year, setYear] = useState(2025);
+  const [year, setYear] = useState(2024);
 
   const handleKey = (event) => {
     if (event.key === 'Enter') {

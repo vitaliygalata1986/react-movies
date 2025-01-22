@@ -16,7 +16,7 @@ function Home() {
   const [searchParams, setSearchParams] = useState({
     search: '',
     genre: 'all',
-    year: 2025,
+    year: 2024,
   });
 
   const getAllFilms = async () => {
@@ -24,15 +24,10 @@ function Home() {
     setLoading(true);
     setNameButton('Загружаю');
     try {
+      // const data = await getAllMovies(pageCount);
       const data = await getAllMovies(search, genre, year, pageCount);
-      if (data?.Search?.length > 0) {
-        // Если фильмы есть, добавляем их
-        setMovies((prevMovies) => [...prevMovies, ...data.Search]);
-        setNameButton('Показать еще');
-      } else {
-        // Если фильмов нет, показываем сообщение
-        setNameButton('Фильмы закончились');
-      }
+      setMovies((prevMovies) => [...prevMovies, ...(data?.Search ?? [])]);
+      setNameButton('Показать еще');
     } catch (err) {
       console.log(err);
     } finally {
@@ -48,11 +43,10 @@ function Home() {
   const searchMovies = async (str, type, year) => {
     setSearchParams({ search: str, genre: type, year });
     setPageCount(1); // Сброс номера страницы
-    setLoading(true);
     try {
       const data = await getAllMoviesBySearch(str, type, year);
       setMovies(data?.Search ?? []);
-      setNameButton('Показать ещё');
+      setLoading(false);
     } catch (err) {
       console.log(err);
     } finally {
@@ -72,10 +66,14 @@ function Home() {
       ) : (
         <>
           <Movies movies={movies} />
-          {movies.length > 0 &&
-            nameButton !== 'Фильмы закончились' && ( // Скрыть кнопку, если фильмы закончились
-              <Button clickCallback={handleShowMore}>{nameButton}</Button>
-            )}
+          {movies.length > 0 && ( // Проверка, что фильмы загружены
+            <Button
+              clickCallback={handleShowMore}
+              disabled={nameButton === 'Фильмы закончились'}
+            >
+              {nameButton}
+            </Button>
+          )}
         </>
       )}
     </div>

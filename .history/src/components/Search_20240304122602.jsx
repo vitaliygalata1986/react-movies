@@ -4,7 +4,7 @@ import { useState } from 'react';
 function Search({ searchMovies = Function.prototype }) {
   const [search, setSearch] = useState('');
   const [genre, setGenre] = useState('all');
-  const [year, setYear] = useState(2025);
+  const [year, setYear] = useState(2024);
 
   const handleKey = (event) => {
     if (event.key === 'Enter') {
@@ -23,34 +23,34 @@ function Search({ searchMovies = Function.prototype }) {
   };
 
   return (
-    <div className='row'>
-      <div className='col s12'>
-        <div className='input-field'>
+    <div className="row">
+      <div className="col s12">
+        <div className="input-field">
           <input
-            placeholder='Search ...'
-            type='search'
-            className='validate'
+            placeholder="Search ..."
+            type="search"
+            className="validate"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             onKeyDown={handleKey}
           />
           <button
-            className='btn search-btn'
+            className="btn search-btn"
             onClick={() => searchMovies(search, genre, year)}
           >
             Search
           </button>
         </div>
       </div>
-      <div className='col s12 block'>
-        <span className='filters-radio'>Genre:</span>
+      <div className="col s12 block">
+        <span className="filters-radio">Genre:</span>
         <div>
           <label>
             <input
-              className='with-gap'
-              name='filter_genre'
-              value='all'
-              type='radio'
+              className="with-gap"
+              name="filter_genre"
+              value="all"
+              type="radio"
               checked={genre === 'all'}
               onChange={handleGenre}
             />
@@ -58,10 +58,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='filter_genre'
-              value='movie'
-              type='radio'
+              className="with-gap"
+              name="filter_genre"
+              value="movie"
+              type="radio"
               checked={genre === 'movie'}
               onChange={handleGenre}
             />
@@ -69,10 +69,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='filter_genre'
-              value='game'
-              type='radio'
+              className="with-gap"
+              name="filter_genre"
+              value="game"
+              type="radio"
               checked={genre === 'game'}
               onChange={handleGenre}
             />
@@ -80,10 +80,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='filter_genre'
-              value='series'
-              type='radio'
+              className="with-gap"
+              name="filter_genre"
+              value="series"
+              type="radio"
               checked={genre === 'series'}
               onChange={handleGenre}
             />
@@ -91,10 +91,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='filter_genre'
-              value='episode'
-              type='radio'
+              className="with-gap"
+              name="filter_genre"
+              value="episode"
+              type="radio"
               checked={genre === 'episode'}
               onChange={handleGenre}
             />
@@ -102,26 +102,15 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
         </div>
       </div>
-      <div className='col s12 block'>
-        <span className='filters-radio'>Year:</span>
+      <div className="col s12 block">
+        <span className="filters-radio">Year:</span>
         <div>
           <label>
             <input
-              className='with-gap'
-              name='year'
-              value='2025'
-              type='radio'
-              checked={year === 2025}
-              onChange={handleYear}
-            />
-            <span>2025</span>
-          </label>
-          <label>
-            <input
-              className='with-gap'
-              name='year'
-              value='2024'
-              type='radio'
+              className="with-gap"
+              name="year"
+              value="2024"
+              type="radio"
               checked={year === 2024}
               onChange={handleYear}
             />
@@ -129,10 +118,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='year'
-              value='2023'
-              type='radio'
+              className="with-gap"
+              name="year"
+              value="2023"
+              type="radio"
               checked={year === 2023}
               onChange={handleYear}
             />
@@ -140,10 +129,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='year'
-              value='2022'
-              type='radio'
+              className="with-gap"
+              name="year"
+              value="2022"
+              type="radio"
               checked={year === 2022}
               onChange={handleYear}
             />
@@ -151,10 +140,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='year'
-              value='2021'
-              type='radio'
+              className="with-gap"
+              name="year"
+              value="2021"
+              type="radio"
               checked={year === 2021}
               onChange={handleYear}
             />
@@ -162,10 +151,10 @@ function Search({ searchMovies = Function.prototype }) {
           </label>
           <label>
             <input
-              className='with-gap'
-              name='year'
-              value='2020'
-              type='radio'
+              className="with-gap"
+              name="year"
+              value="2020"
+              type="radio"
               checked={year === 2020}
               onChange={handleYear}
             />
