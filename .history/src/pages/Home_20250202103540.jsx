@@ -61,6 +61,7 @@ function Home() {
   };
 
   const handleShowMore = () => {
+    console.log(1);
     setPageCount((prev) => prev + 1);
   };
 

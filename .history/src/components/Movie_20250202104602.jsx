@@ -8,6 +8,7 @@ function Movie({
   Poster: poster,
 }) {
   let formatYear = year.replace(/[^0-9]/g, '');
+  console.log(yearFilm);
   return (
     <Link to={`/movie/${id}`} className='card movie'>
       <div className='card-image waves-effect waves-block waves-light'>

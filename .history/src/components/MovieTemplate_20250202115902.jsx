@@ -9,7 +9,6 @@ function MovieTemplate({
   BoxOffice: boxoffice,
   Country: country,
   Ratings: ratings,
-  Writer: writer,
 }) {
   let formatYear = year.replace(/[^0-9]/g, '');
   return (
@@ -43,10 +42,6 @@ function MovieTemplate({
             {genre}
           </p>
           <p>
-            <strong>Writer: </strong>
-            {writer}
-          </p>
-          <p>
             <strong>Country: </strong>
             {country}
           </p>
@@ -57,17 +52,17 @@ function MovieTemplate({
             </p>
           ) : null}
 
-          {ratings.length ? (
+          {ratings !== 'N/A' ? (
             <p>
               <strong>Ratings: </strong>
-              {ratings.map((rating, index) => (
-                <span key={index}>
-                  {rating.Source}: {rating.Value}
-                  {index < ratings.length - 1 ? ', ' : ''}
-                </span>
-              ))}
+              {ratings.Value}
             </p>
           ) : null}
+
+          <p>
+            <strong>Ratings: </strong>
+            {ratings.Value}
+          </p>
         </div>
       </div>
     </>

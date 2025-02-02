@@ -9,7 +9,6 @@ function MovieTemplate({
   BoxOffice: boxoffice,
   Country: country,
   Ratings: ratings,
-  Writer: writer,
 }) {
   let formatYear = year.replace(/[^0-9]/g, '');
   return (
@@ -43,10 +42,6 @@ function MovieTemplate({
             {genre}
           </p>
           <p>
-            <strong>Writer: </strong>
-            {writer}
-          </p>
-          <p>
             <strong>Country: </strong>
             {country}
           </p>
@@ -63,6 +58,7 @@ function MovieTemplate({
               {ratings.map((rating, index) => (
                 <span key={index}>
                   {rating.Source}: {rating.Value}
+                  // add a comma after each rating except the last one
                   {index < ratings.length - 1 ? ', ' : ''}
                 </span>
               ))}

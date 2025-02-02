@@ -59,15 +59,15 @@ label:not(:last-child) {
 .movie-info .card-image {
   flex-shrink: 0;
 }
-
-@media (max-width: 992px) {
+@media (max-width: 767px) {
+  
+}
   nav .brand-logo {
     position: relative;
     transform: unset;
     left: 0;
     top: -2px;
   }
-}
 
 @media (max-width: 767px) {
   .container {

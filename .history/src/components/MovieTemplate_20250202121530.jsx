@@ -43,7 +43,7 @@ function MovieTemplate({
             {genre}
           </p>
           <p>
-            <strong>Writer: </strong>
+            <strong>Genre: </strong>
             {writer}
           </p>
           <p>

@@ -9,7 +9,7 @@ function MovieTemplate({
   BoxOffice: boxoffice,
   Country: country,
   Ratings: ratings,
-  Writer: writer,
+  Writer: Writer,
 }) {
   let formatYear = year.replace(/[^0-9]/g, '');
   return (
@@ -43,8 +43,8 @@ function MovieTemplate({
             {genre}
           </p>
           <p>
-            <strong>Writer: </strong>
-            {writer}
+            <strong>Genre: </strong>
+            {genre}
           </p>
           <p>
             <strong>Country: </strong>
