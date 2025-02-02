@@ -15,10 +15,12 @@ function Search({ searchMovies = Function.prototype }) {
 
   const handleGenre = (event) => {
     setGenre(event.target.value);
+    // searchMovies(search, event.target.value, year);
   };
 
   const handleYear = (event) => {
     setYear(+event.target.value);
+    // searchMovies(search, genre, event.target.value);
   };
 
   return (
@@ -26,7 +28,7 @@ function Search({ searchMovies = Function.prototype }) {
       <div className='col s12'>
         <div className='input-field'>
           <input
-            placeholder='Find a movie...'
+            placeholder='Find a movie ...'
             type='search'
             className='validate'
             value={search}

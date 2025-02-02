@@ -61,7 +61,7 @@ function Home() {
   };
 
   const handleShowMore = () => {
-    setPageCount((prev) => prev + 1);
+    setPageCount((prev) => prev + 1); // increase the page number
   };
 
   return (
@@ -73,7 +73,7 @@ function Home() {
         <>
           <Movies movies={movies} />
           {movies.length > 0 &&
-            nameButton !== 'The movies are over' && ( 
+            nameButton !== 'The movies are over' && ( // Скрыть кнопку, если фильмы закончились
               <Button clickCallback={handleShowMore}>{nameButton}</Button>
             )}
         </>

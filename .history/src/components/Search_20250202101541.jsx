@@ -15,6 +15,7 @@ function Search({ searchMovies = Function.prototype }) {
 
   const handleGenre = (event) => {
     setGenre(event.target.value);
+    // searchMovies(search, event.target.value, year);
   };
 
   const handleYear = (event) => {

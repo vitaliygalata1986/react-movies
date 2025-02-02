@@ -6,7 +6,7 @@ function Footer() {
           © {new Date().getFullYear()} Copyright Vitaliy Galata
           <a
             className='grey-text text-lighten-4 right'
-            href='https://github.com/vitaliygalata1986/react-movies'
+            href='https://vitaliygalata1986.github.io/react-movies/'
             target='__blanck'
           >
             Link to GitHub Repository

@@ -26,11 +26,11 @@ function Home() {
     try {
       const data = await getAllMovies(search, genre, year, pageCount);
       if (data?.Search?.length > 0) {
-        // If there are films, add them
+        // Если фильмы есть, добавляем их
         setMovies((prevMovies) => [...prevMovies, ...data.Search]);
         setNameButton('Show more');
       } else {
-        // If there are no movies, we show a message
+        // Если фильмов нет, показываем сообщение
         setNameButton('The movies are over');
       }
     } catch (err) {
@@ -47,7 +47,7 @@ function Home() {
 
   const searchMovies = async (str, type, year) => {
     setSearchParams({ search: str, genre: type, year });
-    setPageCount(1); // reset page number
+    setPageCount(1); // Сброс номера страницы
     setLoading(true);
     try {
       const data = await getAllMoviesBySearch(str, type, year);
@@ -61,7 +61,7 @@ function Home() {
   };
 
   const handleShowMore = () => {
-    setPageCount((prev) => prev + 1);
+    setPageCount((prev) => prev + 1); // Увеличиваем номер страницы
   };
 
   return (
@@ -73,7 +73,7 @@ function Home() {
         <>
           <Movies movies={movies} />
           {movies.length > 0 &&
-            nameButton !== 'The movies are over' && ( 
+            nameButton !== 'Фильмы закончились' && ( // Скрыть кнопку, если фильмы закончились
               <Button clickCallback={handleShowMore}>{nameButton}</Button>
             )}
         </>

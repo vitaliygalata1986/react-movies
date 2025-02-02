@@ -47,7 +47,7 @@ function Home() {
 
   const searchMovies = async (str, type, year) => {
     setSearchParams({ search: str, genre: type, year });
-    setPageCount(1); // reset page number
+    setPageCount(1); // 
     setLoading(true);
     try {
       const data = await getAllMoviesBySearch(str, type, year);
@@ -61,7 +61,7 @@ function Home() {
   };
 
   const handleShowMore = () => {
-    setPageCount((prev) => prev + 1);
+    setPageCount((prev) => prev + 1); // Увеличиваем номер страницы
   };
 
   return (
@@ -73,7 +73,7 @@ function Home() {
         <>
           <Movies movies={movies} />
           {movies.length > 0 &&
-            nameButton !== 'The movies are over' && ( 
+            nameButton !== 'Фильмы закончились' && ( // Скрыть кнопку, если фильмы закончились
               <Button clickCallback={handleShowMore}>{nameButton}</Button>
             )}
         </>
