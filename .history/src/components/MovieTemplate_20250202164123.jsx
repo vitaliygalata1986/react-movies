@@ -1,5 +1,4 @@
-import { Button } from './Button.jsx';
-import { useNavigate } from 'react-router-dom';
+import Button
 
 function MovieTemplate({
   Title: title,
@@ -15,10 +14,9 @@ function MovieTemplate({
   Writer: writer,
 }) {
   let formatYear = year.replace(/[^0-9]/g, '');
-  const navigate = useNavigate();
   return (
     <>
-      <Button clickCallback={() => navigate(-1)}>Back</Button>
+      <Button>dddd</Button>
       <div className='card movie-info'>
         <div className='card-image waves-effect waves-block waves-light'>
           {poster === 'N/A' ? (

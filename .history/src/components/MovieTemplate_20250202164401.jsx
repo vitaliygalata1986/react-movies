@@ -18,7 +18,7 @@ function MovieTemplate({
   const navigate = useNavigate();
   return (
     <>
-      <Button clickCallback={() => navigate(-1)}>Back</Button>
+      <Button clickCallback=>Back</Button>
       <div className='card movie-info'>
         <div className='card-image waves-effect waves-block waves-light'>
           {poster === 'N/A' ? (
