@@ -16,15 +16,4 @@ const getMoviById = async (id) => {
   return await responce.json();
 };
 
-// get all movies by search
-const getAllMoviesBySearch = async (str, type, year) => {
-  const responce = await fetch(
-    `${API_URL}&s=${str || 'all'}${
-      type !== 'all' ? `&type=${type}` : ''
-    }&y=${year}`
-  );
-
-  return await responce.json();
-};
-
-export { getAllMovies, getAllMoviesBySearch, getMoviById };
+export { getAllMovies, getMoviById };

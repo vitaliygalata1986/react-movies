@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllMovies, getAllMoviesBySearch } from '../api';
+import { getAllMovies} from '../api';
 import { Movies } from '../components/Movies';
 import { Preloader } from '../components/Preloader';
 import { Search } from '../components/Search';
@@ -12,6 +12,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [pageCount, setPageCount] = useState(1);
   const [nameButton, setNameButton] = useState('Show more');
+  const [viewBtn, setViewBtn] = useState(false);
 
   const [searchParams, setSearchParams] = useState({
     search: '',
@@ -19,49 +20,38 @@ function Home() {
     year: 2025,
   });
 
-  const getAllFilms = async () => {
-    const { search, genre, year } = searchParams;
-    setLoading(true);
-    setNameButton('Loading...');
-    try {
-      const data = await getAllMovies(search, genre, year, pageCount);
-      if (data?.Search?.length > 0) {
-        // If there are films, add them
-        setMovies((prevMovies) => [...prevMovies, ...data.Search]);
-        setNameButton('Show more');
-      } else {
-        // If there are no movies, we show a message
-        setNameButton('The movies are over');
-      }
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const getAllFilms = async () => {
+      const { search, genre, year } = searchParams;
+      setLoading(true);
+      setNameButton('Loading...');
+      try {
+        const data = await getAllMovies(search, genre, year, pageCount);
+        if (data?.Search?.length > 0) {
+          setMovies((prevMovies) =>
+            pageCount === 1 ? data.Search : [...prevMovies, ...data.Search]
+          );
+          setNameButton('Show more');
+          setViewBtn(true);
+        } else {
+          setNameButton('The movies are over');
+          setViewBtn(false);
+        }
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     getAllFilms();
-    // eslint-disable-next-line
-  }, [pageCount]);
+  }, [searchParams, pageCount]); // Теперь `getAllFilms` вызывается при изменении поиска
 
   const searchMovies = async (str, type, year) => {
     setSearchParams({ search: str, genre: type, year });
-    setPageCount(1); // reset page number
-    setLoading(true);
-    try {
-      const data = await getAllMoviesBySearch(str, type, year);
-      setMovies(data?.Search ?? []);
-      setNameButton('Show more');
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleShowMore = () => {
-    setPageCount((prev) => prev + 1);
+    setMovies([]); // Очищаем старые фильмы
+    setPageCount(1); // Сбрасываем страницу
+    setViewBtn(false); // Скрываем кнопку до загрузки
   };
 
   return (
@@ -72,8 +62,10 @@ function Home() {
       ) : (
         <>
           <Movies movies={movies} />
-          {movies.length > 0 && nameButton !== 'The movies are over' && (
-            <Button clickCallback={handleShowMore}>{nameButton}</Button>
+          {movies.length > 0 && viewBtn && (
+            <Button clickCallback={() => setPageCount((prev) => prev + 1)}>
+              {nameButton}
+            </Button>
           )}
         </>
       )}
@@ -82,3 +74,11 @@ function Home() {
 }
 
 export { Home };
+
+/*
+setMovies((prevMovies) =>
+  pageCount === 1 ? data.Search : [...prevMovies, ...data.Search]
+);
+Если pageCount === 1, значит, пользователь сделал новый поиск (первая страница). В этом случае просто заменяем movies на data.Search (новые фильмы).
+Если pageCount > 1, то загружаем дополнительную страницу фильмов и добавляем их к существующим (prevMovies).
+*/
